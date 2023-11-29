@@ -281,10 +281,7 @@ LRESULT CALLBACK VETS(HWND hWnd, UINT mes, WPARAM Wparam, LPARAM Param)
                 {
                     manguito = 1;
                 }
-                else
-                {
-                    manguito = 0;
-                }
+            
             }
             if (manguito == 0)
             {
@@ -594,7 +591,7 @@ LRESULT CALLBACK CITAS(HWND cit, UINT mas, WPARAM paw, LPARAM pam)
                 }
             }
 
-            //nombre
+            //nombres
             int mane = 0;
             for (int i = 0; i < (strlen(anombrec)); i++)
             {
@@ -602,11 +599,28 @@ LRESULT CALLBACK CITAS(HWND cit, UINT mas, WPARAM paw, LPARAM pam)
                 {
                     mane = 1;
                 }
-                else
-                {
-                    mane = 0;
-                }
             }
+
+        if(mane  !=0)
+        {
+            int  awass1 = MessageBox(cit, "Ingrese letras", "invalido", MB_OK);
+        }
+
+
+        int mano = 0;
+        for (int i = 0; i < (strlen(anombrem)); i++)
+        {
+            if (isalpha(anombrem[i]) == FALSE)
+            {
+                mano = 1;
+            }
+        }
+
+        if (mano != 0)
+        {
+            int  awass1 = MessageBox(cit, "Ingrese letras", "invalido", MB_OK);
+        }
+
 
 
            
@@ -656,6 +670,14 @@ LRESULT CALLBACK CITAS(HWND cit, UINT mas, WPARAM paw, LPARAM pam)
 
             int monos = 0;
             int horita = atoi(ahora);
+
+            int fu = 0;
+            if (horita < 0 || horita >23)
+            {
+                int  res = MessageBox(cit, "Ingrese una hora entre las 0 y 23", "invalido", MB_OK);
+                fu = 1;
+            }
+
             if (afecha.wDay == st.wDay)
             {
                 if (horita < st.wHour || horita == st.wHour)
@@ -666,7 +688,7 @@ LRESULT CALLBACK CITAS(HWND cit, UINT mas, WPARAM paw, LPARAM pam)
 
             }
 
-            if (max==1 && mau == 1 && awas == 0 && pikachu ==0 && monos==0 && mane==0)
+            if (max==1 && mau == 1 && awas == 0 && pikachu ==0 && monos==0 && mane==0 && fu==0)
             {
                 ncita(afecha, ahora, anombrec, anombrem, acel, aespecie, amotivo, acosto,horita);
                 SetDlgItemText(cit, 1035, "");
@@ -1087,6 +1109,14 @@ LRESULT CALLBACK EDICION(HWND edi, UINT msg, WPARAM paw, LPARAM pam)
             }
             int monos = 0;
             int horita = atoi(ahora);
+            
+            int fu = 0;
+            if (horita < 0 || horita >23)
+            {
+                int  res = MessageBox(cit, "Ingrese una hora entre las 0 y 23", "invalido", MB_OK);
+                fu = 1;
+            }
+
             if (afecha.wDay == st.wDay)
             {
                 if (horita < st.wHour || horita == st.wHour)
@@ -1096,6 +1126,8 @@ LRESULT CALLBACK EDICION(HWND edi, UINT msg, WPARAM paw, LPARAM pam)
                 }
             }
 
+       
+
             int mane = 0;
             for (int i = 0; i < (strlen(anombrec)); i++)
             {
@@ -1103,14 +1135,30 @@ LRESULT CALLBACK EDICION(HWND edi, UINT msg, WPARAM paw, LPARAM pam)
                 {
                     mane = 1;
                 }
-                else
-                {
-                    mane = 0;
-                }
+               
+            }
+
+            if(mane!=0)
+            {
+                int  awass1 = MessageBox(edi, "Ingrese letras", "invalido", MB_OK);
             }
 
 
-            if (max == 1 && mau == 1 && awas == 0 && pikachu == 0 && anombrec== 0)
+            int mano = 0;
+            for (int i = 0; i < (strlen(anombrem)); i++)
+            {
+                if (isalpha(anombrem[i]) == FALSE)
+                {
+                    mano = 1;
+                }
+            }
+
+            if (mano != 0)
+            {
+                int  awass1 = MessageBox(edi, "Ingrese letras", "invalido", MB_OK);
+            }
+
+            if (max == 1 && mau == 1 && awas == 0 && pikachu == 0 && anombrec== 0 && fu==0)
             {
                 editi(afecha, ahora, anombrec, anombrem, acel, aespecie, amotivo, acosto,aestatus,horita);
                 SetDlgItemText(edi, 1035, "");
